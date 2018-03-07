@@ -1,0 +1,31 @@
+﻿
+
+@model Dictionary<string, string>
+@{
+    ViewBag.Title = "Select Calendar";
+}
+
+<h3>@ViewBag.Message</h3>
+
+@if (Model != null)
+{
+    <form method="post" action="/Home/GoogleCalendarAsync">
+        <div>
+        <select name="CalendarID">
+        @foreach (var calendar in Model)
+        {
+            <option value="@calendar.Key">@Html.DisplayFor(modelItem => calendar.Value)</option>
+        }
+        </select>
+        </div>
+        <input type="button" value="create" />Create a new Calendar
+
+        Calendar Name: <input type="text" name="CalendarName" />
+        <div>
+            <button type="submit">Add to my calendar</button>
+        </div>
+    </form>
+}
+else{
+    <div>Chinese Calendar added.</div>
+}
